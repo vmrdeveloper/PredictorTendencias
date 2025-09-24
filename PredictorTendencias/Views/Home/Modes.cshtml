@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Modos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var selected = (int)ViewBag.SelectedMode;
+}
+
+
+
+<h2>Seleccionar modo de predicción</h2>
+
+<form asp-action="SetMode" method="post">
+    <select name="mode" class="form-select">
+        <option value="0" selected="@(selected == 0)">SMA Crossover (por defecto)</option>
+        <option value="1" selected="@(selected == 1)">Regresión Lineal</option>
+        <option value="2" selected="@(selected == 2)">Momentum (ROC)</option>
+
+
+    </select>
+    <br />
+    <button type="submit" class="btn btn-success">Guardar</button>
+</form>

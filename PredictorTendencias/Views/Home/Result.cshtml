@@ -1,0 +1,18 @@
+﻿@model PredictorTendencias.Models.ViewDataModel
+@{
+    ViewData["Title"] = "Resultado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Resultado de la predicción</h2>
+<p><b>Método:</b> @Model.Metodo</p>
+<p><b>Tendencia:</b> @Model.Tendencia</p>
+<p><b>Detalle:</b></p>
+<pre>@Model.Detalle</pre>
+
+@if (Model.ValorPredicho.HasValue)
+{
+    <p><b>Valor predicho (día 21):</b> @Model.ValorPredicho.Value.ToString("F2")</p>
+}
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Volver</a>

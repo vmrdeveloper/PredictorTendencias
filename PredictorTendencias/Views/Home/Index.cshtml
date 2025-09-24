@@ -1,0 +1,25 @@
+﻿@model PredictorTendencias.Models.ViewDataModel
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ingresar 20 valores históricos</h2>
+<p>Formato: YYYY-MM-DD, valor</p>
+
+<form asp-action="Calcular" method="post">
+    <textarea asp-for="RawInput" rows="12" class="form-control"></textarea>
+    <span asp-validation-for="RawInput" class="text-danger"></span>
+    <br />
+    <button type="submit" class="btn btn-primary">Calcular predicción</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="text-danger mt-3">
+        @foreach (var err in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@err.ErrorMessage</p>
+        }
+    </div>
+}
